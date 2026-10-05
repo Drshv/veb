@@ -1,7 +1,3 @@
-"""
-Паттерн Builder — пошаговое создание брони:
-дата/время → столик → контакты → финализация.
-"""
 from datetime import datetime
 
 from backend.models.booking import Booking
@@ -10,7 +6,7 @@ from backend.repositories.table_repository import TableRepository
 
 
 class BookingBuilder:
-    """Пошаговый конструктор объекта Booking."""
+    #Пошаговый конструктор объекта Booking
 
     def __init__(self, user_id: int):
         self._user_id = user_id
@@ -20,14 +16,14 @@ class BookingBuilder:
         self._pending_status_id = None
 
     def set_datetime(self, booking_datetime: datetime):
-        """Шаг 1: дата и время."""
+        #Шаг 1: дата и время
         if isinstance(booking_datetime, str):
             booking_datetime = datetime.fromisoformat(booking_datetime.replace("Z", ""))
         self._booking.booking_datetime = booking_datetime
         return self
 
     def set_table(self, table_id: int):
-        """Шаг 2: выбор столика (с проверкой доступности)."""
+        #Шаг 2: выбор столика (с проверкой доступности)
         table = self._table_repo.find_by_id(table_id)
         if not table:
             raise ValueError("Столик не найден")
@@ -41,14 +37,14 @@ class BookingBuilder:
         return self
 
     def set_guests(self, guests_count: int):
-        """Количество гостей."""
+        #Количество гостей
         if guests_count < 1:
             raise ValueError("Количество гостей должно быть не менее 1")
         self._booking.guests_count = guests_count
         return self
 
     def set_contacts(self, guest_name: str, phone: str):
-        """Шаг 3: контактные данные (имя и телефон)."""
+        #Шаг 3: контактные данные (имя и телефон)
         self._booking.special_requests = f"Имя: {guest_name}"
         # Телефон дублируем в comment для админа
         self._booking.comment = self._booking.comment or ""
@@ -59,7 +55,7 @@ class BookingBuilder:
         return self
 
     def set_comment(self, comment: str):
-        """Дополнительный комментарий к брони."""
+        #Дополнительный комментарий к брони
         if comment:
             base = self._booking.comment or ""
             self._booking.comment = f"{base}\n{comment}".strip() if base else comment
@@ -73,7 +69,7 @@ class BookingBuilder:
         return self
 
     def build(self) -> Booking:
-        """Шаг 4: финализация — проверка обязательных полей."""
+        #Шаг 4: финализация — проверка обязательных полей
         if not self._booking.booking_datetime:
             raise ValueError("Не указана дата и время")
         if not self._booking.table_id:

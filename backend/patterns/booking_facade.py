@@ -1,12 +1,8 @@
-"""
-Паттерн Facade — упрощённый интерфейс для отмены брони:
-проверка времени (2+ часа) + обновление статуса + «уведомление».
-"""
 from backend.repositories.booking_repository import BookingRepository
 
 
 class BookingFacade:
-    """Фасад для сложных операций с бронированиями."""
+    #Фасад для сложных операций с бронированиями
 
     def __init__(self):
         self._repo = BookingRepository()
@@ -73,7 +69,7 @@ class BookingFacade:
         guests_count=None,
         table_id=None,
     ) -> dict:
-        """Редактирование времени и/или количества гостей."""
+        #Редактирование времени и/или количества гостей
         from datetime import datetime
 
         from backend.repositories.table_repository import TableRepository
@@ -111,7 +107,7 @@ class BookingFacade:
         return [b.to_dict() for b in bookings]
 
     def _send_notification(self, user_id: int, text: str) -> dict:
-        """Имитация уведомления (в реальном проекте — email/SMS)."""
+        #Имитация уведомления (в реальном проекте — email/SMS)
         note = {"user_id": user_id, "text": text}
         self._notifications.append(note)
         return note

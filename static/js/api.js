@@ -1,6 +1,3 @@
-/**
- * Общие функции для REST API (тонкий клиент).
- */
 const API_BASE = "";
 
 async function apiRequest(path, options = {}) {

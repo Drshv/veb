@@ -1,4 +1,3 @@
-"""API: /api/bookings — CRUD, отмена, редактирование."""
 from datetime import datetime
 
 from flask import Blueprint, jsonify, request, session

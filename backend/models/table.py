@@ -1,4 +1,3 @@
-"""Столик в зале ресторана."""
 from datetime import datetime, timedelta
 from typing import Optional
 

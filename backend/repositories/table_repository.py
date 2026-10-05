@@ -1,4 +1,3 @@
-"""Repository для столиков."""
 from datetime import datetime
 
 from backend.database.postgres_db import PostgresDB

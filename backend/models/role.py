@@ -1,4 +1,3 @@
-"""Модель ролей: admin (id=1), client (id=2)."""
 from backend.extensions import db
 
 

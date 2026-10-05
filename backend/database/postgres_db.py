@@ -1,11 +1,5 @@
-"""
-Singleton для доступа к БД через SQLAlchemy.
-Все репозитории используют один экземпляр PostgresDB.
-"""
-
-
 class PostgresDB:
-    """Паттерн Singleton — единое подключение к PostgreSQL."""
+    #Паттерн Singleton — единое подключение к PostgreSQL.
 
     _instance = None
 
@@ -16,7 +10,7 @@ class PostgresDB:
         return cls._instance
 
     def init_app(self, db):
-        """Привязка к Flask-SQLAlchemy после создания приложения."""
+        #Привязка к Flask-SQLAlchemy после создания приложения.
         self._db = db
 
     @property
@@ -30,9 +24,9 @@ class PostgresDB:
         return self.db.session
 
     def execute_query(self, query, params=None):
-        """Выполнение сырого SQL (при необходимости)."""
+        #Выполнение сырого SQL (при необходимости).
         return self.session.execute(query, params or {})
 
     def close(self):
-        """Закрытие сессии."""
+        #Закрытие сессии.
         self.session.remove()

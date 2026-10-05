@@ -1,4 +1,3 @@
-"""Repository для пользователей."""
 from backend.database.postgres_db import PostgresDB
 from backend.models.user import User
 

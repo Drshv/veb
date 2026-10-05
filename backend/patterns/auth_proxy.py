@@ -1,7 +1,3 @@
-"""
-Паттерн Proxy — проверка прав доступа перед выполнением операций.
-Клиент видит только свои брони, администратор — все.
-"""
 from functools import wraps
 
 from flask import jsonify, session
@@ -10,7 +6,7 @@ from backend.repositories.user_repository import UserRepository
 
 
 class AuthProxy:
-    """Прокси для аутентификации и авторизации."""
+    #Прокси для аутентификации и авторизации
 
     ROLE_ADMIN = 1
     ROLE_CLIENT = 2
@@ -41,7 +37,7 @@ class AuthProxy:
         return False
 
     def can_access_booking(self, booking) -> bool:
-        """Клиент — только свои брони; админ — любые."""
+        #Клиент — только свои брони; админ — любые
         user = self.get_current_user()
         if not user:
             return False
@@ -55,7 +51,7 @@ auth_proxy = AuthProxy()
 
 
 def login_required(f):
-    """Декоратор: требуется вход в систему."""
+    #Декоратор: требуется вход в систему.
 
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -67,7 +63,7 @@ def login_required(f):
 
 
 def admin_required(f):
-    """Декоратор: только администратор (role_id=1)."""
+    #Декоратор: только администратор (role_id=1).
 
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -81,7 +77,7 @@ def admin_required(f):
 
 
 def client_required(f):
-    """Декоратор: только клиент (role_id=2)."""
+    #Декоратор: только клиент (role_id=2).
 
     @wraps(f)
     def decorated(*args, **kwargs):

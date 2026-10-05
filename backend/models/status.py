@@ -1,4 +1,3 @@
-"""Статусы брони: pending, confirmed, cancelled, rejected."""
 from backend.extensions import db
 
 

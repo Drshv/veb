@@ -1,4 +1,3 @@
-"""API: /api/admin — панель администратора."""
 import io
 from datetime import date, datetime
 

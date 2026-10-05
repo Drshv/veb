@@ -1,4 +1,3 @@
-"""Repository для бронирований."""
 from datetime import date, datetime
 
 from backend.database.postgres_db import PostgresDB

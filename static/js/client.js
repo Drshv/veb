@@ -1,6 +1,3 @@
-/**
- * Клиентская страница: схема зала, пошаговое бронирование (Builder), мои брони.
- */
 let currentUser = null;
 let selectedTableId = null;
 let hallTables = [];

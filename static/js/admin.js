@@ -1,6 +1,3 @@
-/**
- * Админ-панель: календарь, график загрузки, столики, история, CSV.
- */
 let adminUser = null;
 let occupancyChart = null;
 

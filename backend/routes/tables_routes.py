@@ -1,4 +1,3 @@
-"""API: /api/tables — список столиков и свободные на время."""
 from datetime import datetime
 
 from flask import Blueprint, jsonify, request

@@ -1,4 +1,3 @@
-"""API: /api/auth — регистрация и вход."""
 from flask import Blueprint, jsonify, request, session
 
 from backend.models.user import User

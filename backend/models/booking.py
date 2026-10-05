@@ -1,4 +1,3 @@
-"""Бронь столика."""
 from datetime import datetime, timedelta
 
 from backend.extensions import db
