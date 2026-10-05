@@ -20,7 +20,7 @@
 
 ## Требования
 
-- Python 3.10+
+- Python 3.10+ (проверено на 3.13)
 - PostgreSQL 14+ (локально, порт 5432)
 
 ## Установка и запуск (Windows)
@@ -46,9 +46,20 @@ postgresql://postgres:postgres@localhost:5432/restaurant_booking
 ```powershell
 cd "путь\к\папке\veb"
 python -m venv venv
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\activate
 pip install -r requirements.txt
 ```
+
+> Если PowerShell выдаёт ошибку политики выполнения, выполните один раз:
+> ```powershell
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+> ```
+> Ответьте `Y`, затем снова активируйте окружение.
+
+> Если `requirements.txt` не устанавливается автоматически, установите драйвер вручную:
+> ```powershell
+> pip install "psycopg[binary]"
+> ```
 
 ### 3. Запуск сервера
 
